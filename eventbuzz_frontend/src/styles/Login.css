@@ -1,0 +1,95 @@
+/* General form styling */
+form {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Form labels */
+label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Form inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="text"].Username {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #E50914;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #B20710;
+}
+
+/* Error message */
+p[style*="color: red"] {
+    color: #E50914;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Success message */
+p[style*="color: green"] {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Heading styling */
+h2 {
+    text-align: center;
+    color: #E50914;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 400px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+    }
+}

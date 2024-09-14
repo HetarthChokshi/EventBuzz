@@ -1,0 +1,10 @@
+IN BACKEND:
+
+Django
+ django-cors-headers
+
+IN FRONTEND:
+
+npm create vite@latest . ---> react, javascript
+react-router-dom
+

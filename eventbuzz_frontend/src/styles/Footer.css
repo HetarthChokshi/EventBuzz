@@ -1,0 +1,97 @@
+#footer .footer {
+    background-color: #333338;
+    height: 250px;
+  }
+  
+  #footer .events {
+    margin-top: 30px;
+  }
+  
+  #footer .sports {
+    margin-top: 30px;
+  }
+  
+  /* Footer */
+  #footer  {
+    background-color: #111;
+  }
+  
+  #footer .footerContainer {
+    width: 100%;
+    padding: 20px 30px 20px;
+  }
+  
+  #footer .socialIcons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #footer .socialIcons a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+  }
+  
+  #footer .socialIcons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.8;
+  }
+  
+  /* Hover affect on social media icon */
+  #footer .socialIcons a:hover {
+    background-color: #111;
+    transition: 0.5s;
+  }
+  
+  #footer .socialIcons a:hover i {
+    color: white;
+    transition: 0.5s;
+  }
+
+  
+  #footer .footerBottom {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #footer .footerBottom p {
+    color: white;
+    font-size: medium;
+  }
+  
+  #footer .designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+  }
+  
+  @media (max-width: 700px) {
+    .footerNav ul {
+      flex-direction: column;
+    }
+  
+    .footerNav ul li {
+      width: 100%;
+      text-align: center;
+      margin: 10px;
+    }
+  
+    .socialIcons a {
+      padding: 8px;
+      margin: 4px;
+    }
+  }
+
+  #footer .brand-logo {
+    height: 35px;
+    /* margin-left: 50%; */
+    /* margin-right: 20px; */
+    margin:20px 0px 5px 5px;
+  }
+  

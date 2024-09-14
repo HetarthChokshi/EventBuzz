@@ -1,0 +1,264 @@
+#movieinfo #header {
+    background-color: lightcoral;
+    background-size: 100% 100%;
+}
+
+#movieinfo .row{
+    display: block;
+}
+
+#movieinfo div.col1 {
+    margin-top: 30px;
+    margin-bottom: 35px;
+    margin-right: 75px;
+    float: right;
+    opacity: 1;
+}
+
+#movieinfo img.Movie_Img {
+    border-radius: 5px;
+    border: 0px solid darkgrey;
+}
+
+#movieinfo div.col2_body {
+    margin-top: 140px;
+   
+    
+}
+#movieinfo .pad{
+    padding-left: 0px !important;
+    margin-left: -40px;
+}
+
+#movieinfo h1.movie_title {
+    font-weight: bolder;
+    color: white;
+    font-size: 40px;
+    letter-spacing: 1px;
+}
+
+
+
+#movieinfo span.ratings {
+    font-weight: bolder !important;
+    color: white !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    margin-top: 10px !important;
+    margin-left: 5px !important;
+}
+
+#movieinfo a.view_rating {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#movieinfo a.view_rating:link {
+    color: white;
+    text-decoration: none;
+}
+
+#movieinfo a.view_rating:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#movieinfo a.view_rating:hover {
+    color: white;
+}
+
+#movieinfo a.view_rating:active {
+    color: white;
+    text-decoration: none;
+}
+
+#movieinfo a:link,
+a:visited {
+    text-decoration: none;
+}
+
+#movieinfo .add_rating {
+    background-color: rgb(55, 54, 54) !important;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 10px ;
+    padding: 5px;
+    width: 220px;
+
+}
+
+
+#movieinfo div.add_text {
+    padding: 12px;
+}
+
+#movieinfo .rating_button {
+    padding: 3px 5px !important;
+    font-size: 13px ;
+    margin-left: 65px;
+    margin-bottom: 3px;
+    background-color: white !important;
+    border-radius: 5px !important;
+    font-weight: 500 ;
+}
+
+
+#movieinfo a.view_rating {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#movieinfo a.add_rating_button {
+    color: black;
+    text-decoration: none;
+}
+
+#movieinfo a.add_rating_button:visited {
+    color: black;
+    text-decoration: none;
+}
+
+#movieinfo a.add_rating_button:hover {
+    color: black;
+}
+
+#movieinfo a.add_rating_button:active {
+    color: black;
+    text-decoration: none;
+}
+
+#movieinfo div.categories {
+    color: white;
+    font-size: 12pt;
+    
+}
+#movieinfo .type .btn{
+    background:rgb(229, 229, 229) !important;
+    padding: 2px 8px;
+    font-size: 16px !important;
+    font-family: sans-serif !important;
+}
+#movieinfo button.Book_Now {
+    padding: 12px 75px;
+    font-size: 10pt;
+    border-radius: 8px;
+    background-color: rgb(247, 50, 50);
+    border:0px;
+}
+
+#movieinfo a.booking_button {
+    color: white;
+    text-decoration: none;
+}
+
+#movieinfo a.booking_button:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#movieinfo a.booking_button:hover {
+    color: white;
+}
+
+#movieinfo a.booking_button:active {
+    color: white;
+    text-decoration: none;
+}
+
+#movieinfo button.share {
+    margin-left: 140px;
+    padding: 13px;
+    float: left;
+    font-size: 24pt;
+    font-weight: bold;
+    color: white;
+    background-color: gray;
+}
+
+#movieinfo div.content_body {
+    margin-left: 135px;
+}
+
+#movieinfo h1.title {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#movieinfo p.description {
+    font-size: 14pt;
+}
+
+#movieinfo hr.horizontal_line {
+    height: 2px;
+    border-width: 0;
+    color: gray;
+    background-color: gray;
+
+}
+
+#movieinfo img.cast {
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    float: right;
+}
+
+#movieinfo figure.cast_fig {
+    display: inline-block;
+    margin: 10px;
+}
+
+#movieinfo figcaption.img_caption {
+    font-size: 15pt;
+    text-align: center;
+}
+
+#movieinfo figure.movie_fig1 {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#movieinfo figure.movie_fig {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#movieinfo figcaption.movie_caption {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#movieinfo div.logo-container {
+    text-align: center;
+}
+
+#movieinfo img.logo {
+    height: 100px;
+    width: auto;
+    vertical-align: middle;
+}
+
+#movieinfo div.footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 15pt;
+}
+
+#movieinfo img.follow_img {
+    height: 75px;
+    border-radius: 15px;
+    width: auto;
+    vertical-align: middle;
+    margin: 15px;
+}
+
+#movieinfo .banner{
+    height: 480px;
+}
