@@ -45,3 +45,48 @@ class Crew(models.Model):
 
     def __str__(self):
         return self.crew_name
+
+class Theatre(models.Model):
+    theatre_id = models.AutoField(primary_key=True)
+    theatre_name = models.CharField(max_length=255)
+    city=models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.theatre_name
+class Event(models.Model):
+    event_id = models.IntegerField(primary_key=True)
+    event_name=models.CharField(max_length=200)
+    genre=models.CharField(max_length=20)
+    venue=models.CharField(max_length=50)
+    date=models.CharField(max_length=20)
+    languages=models.CharField(max_length=100)
+    age_limit=models.CharField(max_length=100)
+    poster_path=models.CharField(max_length=200)
+    banner_path=models.CharField(max_length=200)
+    description=models.TextField()
+ 
+   
+    def __str__(self):
+        return self.event_name
+class Sport(models.Model):
+    sport_id = models.IntegerField(primary_key=True)  
+    sport_name = models.CharField(max_length=200)  
+    category = models.CharField(max_length=100)  # Category of the sport
+    poster_path = models.CharField(max_length=200)  # Path for poster
+    banner_path = models.CharField(max_length=200)  # Path for banner
+    venue = models.CharField(max_length=100)  
+    date = models.CharField(max_length=20)  
+    duration = models.CharField(max_length=50)  
+    
+    def __str__(self):
+        return self.sport_name
+    
+class Showtime(models.Model):
+    show_id = models.IntegerField(primary_key=True)  
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)  # Foreign key to Movie model
+    theatre = models.ForeignKey(Theatre, on_delete=models.CASCADE)  # Foreign key to Theatre model
+    show_date = models.CharField(max_length=20)  # Date of the show (could also use DateField)
+    show_timing = models.CharField(max_length=20)  # Time of the show
+    
+    def __str__(self):
+        return f"{self.movie} at {self.theatre} on {self.show_date} at {self.show_timing}"
