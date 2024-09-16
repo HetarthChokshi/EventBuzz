@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import '../styles/Footer.css';
 
+import { useNavigate } from 'react-router-dom'
+
 export default function Register() {
     const [formData, setFormData] = useState({
         username: "",
@@ -9,6 +11,8 @@ export default function Register() {
         password1: "",
         password2: "",
     });
+
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setFormData({
@@ -32,6 +36,9 @@ export default function Register() {
             const response = await axios.post("http://127.0.0.1:8000/api/register/", formData)
             console.log("Success!", response.data)
             setSuccessMessage("Registration Successful!")
+            setTimeout(() => {
+				navigate('/') 
+			}, 1000)
         }
         catch (error) {
             console.log("Error during registration!", error.response?.data);
@@ -47,10 +54,10 @@ export default function Register() {
     };
     return (
         <div>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
             <h2>Register:</h2>
             <form>
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
                 <label>username:</label>
                 <br />
                 <input
@@ -95,6 +102,14 @@ export default function Register() {
                 <button type="submit" disabled={isLoading} onClick={handleSubmit}>
                     Register
                 </button>
+                <div className="register-link">
+                    <p>
+                        Already have an account?
+                        <a href="/login">
+                            &nbsp;Login Now
+                        </a>
+                    </p>
+                </div>
             </form>
         </div>
     );

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -14,6 +15,10 @@ import HomeCarousel from './HomeCarousel.jsx';
 export default function Home() {
 	const [username, setUsername] = useState("")
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+	const [movies, setMovies] = useState([]);
+	const [events, setEvents] = useState([]);
+	const [sports, setSports] = useState([]);
 
 	useEffect(() => {
 		const checkLoggedInUser = async () => {
@@ -39,7 +44,10 @@ export default function Home() {
 			}
 		}
 		checkLoggedInUser()
-	})
+		fetchMovies()
+		fetchEvents()
+		fetchSports()
+	}, [])
 
 	const handleLogout = async () => {
 		try {
@@ -63,7 +71,42 @@ export default function Home() {
 		catch (error) {
 			console.error("Failed to logout", error.response?.data || error.message)
 		}
+
+		const loadSwiperContent = {}
+
 	}
+
+	const fetchMovies = async () => {
+		try {
+			const response = await axios.get('http://127.0.0.1:8000/api/movies/');
+			setMovies(response.data);
+			console.log(response.data)
+		} catch (error) {
+			console.error("Failed to fetch movies", error);
+		}
+	};
+
+	const fetchEvents = async () => {
+		try {
+			const response = await axios.get('http://127.0.0.1:8000/api/events/');
+			setEvents(response.data);
+			console.log(response.data)
+		} catch (error) {
+			console.error("Failed to fetch movies", error);
+		}
+	};
+
+	const fetchSports = async () => {
+		try {
+			const response = await axios.get('http://127.0.0.1:8000/api/sports/');
+			setSports(response.data);
+			console.log(response.data)
+		} catch (error) {
+			console.error("Failed to fetch movies", error);
+		}
+	};
+
+
 	return (
 		<>
 			<HomeCarousel />
@@ -97,126 +140,25 @@ export default function Home() {
 							onSwiper={(swiper) => console.log(swiper)}
 							onSlideChange={() => console.log('slide change')}
 						>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="html/Dune_Part_2.html" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/stree2/poster.avif" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
+							{movies.map(movie => (
+								<SwiperSlide>
+
+									<div className="movie">
+										<Link to={`/movie/${movie.movie_id}`} className="card">
+											<div className="card">
+												<img src={movie.poster_path} className="card-img" alt={movie.movie_name} />
+												<div className="card-body">
+													<ion-icon name="heart-sharp" />
+													<p>{movie.like_percentage}%  {movie.votes} votes</p>
+												</div>
 											</div>
-										</div>
-									</a>
-									<h3>Stree 2: Sarkate Ka Aatank</h3>
-									<p className="detail">Comedy/Horror</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="html/Dune_Part_1.html" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/deadpool-and-wolverine/poster.avif" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>Deadpool & Wolverine</h3>
-									<p className="detail">Action/Adventure/Comedy</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="html/Dune_Part_2.html" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/3-ekka/poster.jpeg" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>3 EKKA</h3>
-									<p className="detail">Comedy/Crime</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="/movie" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/kill/poster.avif" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>KILL</h3>
-									<p className="detail">Action/Thriller</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="html/Dune_Part_2.html" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/kalki-2898-AD/poster.jpeg" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>Kalki 2898 AD</h3>
-									<p className="detail">Sci-fi/Adventure</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="/movie" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/hu-ane-tu/poster.jpeg" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>Hu ane Tu</h3>
-									<p className="detail">Comedy/Drama/Romantic</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="html/Dune_Part_2.html" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/devara/poster.avif" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>Devara - Part 1</h3>
-									<p className="detail">Action/Drama/Thriller</p>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div className="movie">
-									<a href="html/Dune_Part_2.html" className='card'>
-										<div className="card">
-											<img src="/images/movie_img/vedaa/poster.avif" className="card-img" alt="" />
-											<div className="card-body">
-												<ion-icon name="heart-sharp" />
-												<p>94% 14k votes</p>
-											</div>
-										</div>
-									</a>
-									<h3>Vedaa</h3>
-									<p className="detail">Action/Drama</p>
-								</div>
-							</SwiperSlide>
+										</Link>
+										<h3>{movie.movie_name}</h3>
+										<p className="detail">{movie.genres}</p>
+									</div>
+
+								</SwiperSlide>
+							))}
 						</Swiper>
 						<div className="swiper-button-prev"></div>
 						<div className="swiper-button-next"></div>
@@ -226,71 +168,22 @@ export default function Home() {
 					<h1 className="title">&nbsp; Popular Events</h1>
 					<div className="movies-list" id="Events">
 						<div className="card-container">
-							<div className="movie">
-								<a href="html/Alan_Walker.html">
-									<div className="card">
-										<img src="/images/event_img/tcf-all-star/poster.avif" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>93%   25k votes</p>
+
+							{events.map(event => (
+								<div className="movie">
+									<Link to={`/events/${event.event_id}`} className="card">
+										<div className="card">
+											<img src={event.poster_path} className="card-img" alt={event.event_name} />
+											<div className="card-body">
+												<ion-icon name="heart-sharp" />
+												<p>{event.like_percentage}%   {event.votes} votes</p>
+											</div>
 										</div>
-									</div>
-								</a>
-								<h3>Sunburn Arena-Ft.Alan Walker</h3>
-								<p className="detail">Venue To be Announced</p>
-							</div>
-							<div className="movie">
-								<a href="html/Sunburn_Goa.html">
-									<div className="card">
-										<img src="/images/event_img/alan-walker/poster.jpg" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>92%   16k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Sunburn Chandigarh</h3>
-								<p className="detail">Holi Festival</p>
-							</div>
-							<div className="movie">
-								<a href="html/Probuzz_S2.html">
-									<div className="card">
-										<img src="/images/event_img/akash-gupta/poster.jpeg" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>94%   14k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Probuzz Fiesta Season-2</h3>
-								<p className="detail">Vrundavan Premium Lawn</p>
-							</div>
-							<div className="movie">
-								<a href="html/Open_Mic.html">
-									<div className="card">
-										<img src="/images/event_img/indian-ocean/poster.jpeg" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>59%   74k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Open Mic-StandUp</h3>
-								<p className="detail">The Comedy Factory </p>
-							</div>
-							<div className="movie">
-								<a href="html/Baap_Ko_Mat_Sikha.html">
-									<div className="card">
-										<img src="/images/event_img/mandli/poster.avif" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>87%   34k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Baap ko mat sikha-Ft.Pranit </h3>
-								<p className="detail">StandUp &amp; Crowd Work-Solo</p>
-							</div>
+									</Link>
+									<h3>{event.event_name}</h3>
+									<p className="detail">{event.venue}</p>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -300,71 +193,21 @@ export default function Home() {
 					<h1 className="title">&nbsp; Sports</h1>
 					<div className="movies-list" id="Sports">
 						<div className="card-container">
-							<div className="movie">
-								<a href="html/Alan_Walker.html">
-									<div className="card">
-										<img src="/images/event_img/tcf-all-star/poster.avif" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>93%   25k votes</p>
+							{sports.map((sport =>
+								<div className="movie">
+									<Link to={`/sports/${sport.sport_id}`} className="card">
+										<div className="card">
+											<img src={sport.poster_path} className="card-img" alt={sport.sport_name} />
+											<div className="card-body">
+												<ion-icon name="heart-sharp" />
+												<p>{sport.like_percentage}%   {sport.votes} votes</p>
+											</div>
 										</div>
-									</div>
-								</a>
-								<h3>Sunburn Arena-Ft.Alan Walker</h3>
-								<p className="detail">Venue To be Announced</p>
-							</div>
-							<div className="movie">
-								<a href="html/Sunburn_Goa.html">
-									<div className="card">
-										<img src="/images/event_img/alan-walker/poster.jpg" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>92%   16k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Sunburn Chandigarh</h3>
-								<p className="detail">Holi Festival</p>
-							</div>
-							<div className="movie">
-								<a href="html/Probuzz_S2.html">
-									<div className="card">
-										<img src="/images/event_img/akash-gupta/poster.jpeg" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>94%   14k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Probuzz Fiesta Season-2</h3>
-								<p className="detail">Vrundavan Premium Lawn</p>
-							</div>
-							<div className="movie">
-								<a href="html/Open_Mic.html">
-									<div className="card">
-										<img src="/images/event_img/indian-ocean/poster.jpeg" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>59%   74k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Open Mic-StandUp</h3>
-								<p className="detail">The Comedy Factory </p>
-							</div>
-							<div className="movie">
-								<a href="html/Baap_Ko_Mat_Sikha.html">
-									<div className="card">
-										<img src="/images/event_img/mandli/poster.avif" className="card-img" alt="" />
-										<div className="card-body">
-											<ion-icon name="heart-sharp" />
-											<p>87%   34k votes</p>
-										</div>
-									</div>
-								</a>
-								<h3>Baap ko mat sikha-Ft.Pranit </h3>
-								<p className="detail">StandUp &amp; Crowd Work-Solo</p>
-							</div>
+									</Link>
+									<h3>{sport.sport_name}</h3>
+									<p className="detail">Venue To be Announced</p>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>

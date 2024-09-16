@@ -10,6 +10,8 @@ import Navbar from './pages/Navbar.jsx';
 import Home from './pages/Home.jsx';
 import Footer from './pages/Footer.jsx'
 import MovieInfo from './pages/MovieInfo.jsx';
+import Events from './pages/Events.jsx';
+import Sports from './pages/Sports.jsx';
 
 
 // Use to hide and show the apps in which navbar and footer is shown and not shown
@@ -27,9 +29,11 @@ function Appwrapper() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/movie" element={<MovieInfo />} />
+                <Route path="/movie/:movieId" element={<MovieInfo />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/events/:eventId" element={<Events />} />
+                <Route path="/sports/:sportsId" element={<Sports />} />
             </Routes>
 
             {!hideNavAndFooterRoutes.includes(location.pathname) && <Footer />}

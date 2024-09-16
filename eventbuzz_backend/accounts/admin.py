@@ -13,7 +13,7 @@ class CustomAdminUSer(UserAdmin):
 class Movie(admin.ModelAdmin):
     # This will display all fields 
     list_display = ('movie_id', 'movie_name', 'rating', 'votes', 'release_date', 'genres', 
-                    'duration', 'languages', 'dimensions', 'poster_path', 'banner_path', 'description')
+                    'duration', 'languages', 'dimensions', 'poster_path', 'banner_path', 'description', 'like_percentage')
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
     list_display = ('actor_id', 'actor_name', 'actor_role', 'image_path', 'movie_id')
@@ -21,6 +21,7 @@ class ActorAdmin(admin.ModelAdmin):
 @admin.register(Crew)
 class CrewAdmin(admin.ModelAdmin):
     list_display = ('crew_id', 'crew_name', 'crew_role', 'image_path', 'movie_id')
+    
 @admin.register(Theatre)
 class TheatreAdmin(admin.ModelAdmin):
     list_display = ('theatre_id', 'theatre_name', 'city') 
@@ -29,11 +30,14 @@ class TheatreAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         'event_id', 'event_name', 'genre', 'venue', 'date', 
-        'languages', 'age_limit', 'poster_path', 'banner_path', 'description'
+        'languages', 'age_limit', 'poster_path', 'banner_path', 'description','like_percentage','votes'
     )  
+
 @admin.register(Sport)
 class SportAdmin(admin.ModelAdmin):
-    list_display = ('sport_id', 'sport_name', 'category', 'poster_path', 'banner_path', 'venue', 'date', 'duration') 
+    list_display = ('sport_id', 'sport_name', 'category', 'poster_path', 'banner_path', 'venue', 'date', 'duration','like_percentage','votes') 
+
 @admin.register(Showtime)
 class ShowtimeAdmin(admin.ModelAdmin):
     list_display = ('show_id', 'movie', 'theatre', 'show_date', 'show_timing')
+

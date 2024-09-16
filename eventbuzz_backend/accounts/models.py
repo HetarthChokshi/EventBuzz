@@ -23,6 +23,8 @@ class Movie(models.Model):
     banner_path = models.CharField(max_length=512)  # path to the banner image
     description = models.TextField()  # detailed description of the movie
 
+    like_percentage = models.IntegerField(default=0)
+
     def __str__(self):
         return self.movie_name
 
@@ -64,6 +66,9 @@ class Event(models.Model):
     poster_path=models.CharField(max_length=200)
     banner_path=models.CharField(max_length=200)
     description=models.TextField()
+
+    like_percentage = models.IntegerField(default=0)
+    votes = models.CharField(max_length=20, default='0k')
  
    
     def __str__(self):
@@ -77,6 +82,9 @@ class Sport(models.Model):
     venue = models.CharField(max_length=100)  
     date = models.CharField(max_length=20)  
     duration = models.CharField(max_length=50)  
+
+    like_percentage = models.IntegerField(default=0)
+    votes = models.CharField(max_length=20, default='0k')
     
     def __str__(self):
         return self.sport_name

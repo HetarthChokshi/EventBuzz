@@ -1,4 +1,4 @@
-from .models import CustomUser
+from .models import *
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 
@@ -42,3 +42,30 @@ class UserLoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+    
+
+class MovieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+
+class EventsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = '__all__'
+
+class Sportserializers(serializers.ModelSerializer):
+    class Meta:
+        model = Sport
+        fields = '__all__'
+
+class ActorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Actor
+        fields = '__all__'
+
+class CrewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Crew
+        fields = '__all__'

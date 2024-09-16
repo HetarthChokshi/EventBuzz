@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import '../styles/Login.css';
 
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     })
 
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setFormData({
@@ -32,6 +35,9 @@ export default function Login() {
             setSuccessMessage("Login Successful!")
             localStorage.setItem("accessToken", response.data.tokens.access);
             localStorage.setItem("refreshToken", response.data.tokens.refresh)
+            setTimeout(() => {
+				navigate('/') 
+			}, 1000)
         }
         catch (error) {
             console.log("Error during Login!", error.response?.data);
@@ -49,11 +55,10 @@ export default function Login() {
 
     return (
         <div>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
             <h2>Login:</h2>
             <form>
-
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
                 <label>email:</label>
                 <br />
                 <input
@@ -78,6 +83,14 @@ export default function Login() {
                 <button type="submit" disabled={isLoading} onClick={handleSubmit}>
                     Login
                 </button>
+                <div className="register-link">
+                    <p>
+                        Dont have an account?
+                        <a href="/register">
+                            &nbsp;Register Now
+                        </a>
+                    </p>
+                </div>
             </form>
         </div>
     )

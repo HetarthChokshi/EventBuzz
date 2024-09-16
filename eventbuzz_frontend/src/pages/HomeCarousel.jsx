@@ -8,7 +8,7 @@ function HomeCarousel() {
         <Carousel.Item>
           <img loading="lazy"
             className="d-block w-100"
-            src= "/images/carousel_img/alan.avif"
+            src= "/images/movie_img/deadpool-and-wolverine/banner.avif"
             alt="First slide"
             height="300px"
           />
@@ -16,7 +16,7 @@ function HomeCarousel() {
         <Carousel.Item>
           <img loading="lazy"
             className="d-block w-100"
-            src="/images/carousel_img/promotion.avif"
+            src="/images/sports_img/mi-vs-rr/banner.avif"
             alt="Second slide"
             height="300px"
           />

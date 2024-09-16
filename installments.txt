@@ -1,10 +1,16 @@
 IN BACKEND:
 
 Django
- django-cors-headers
+django-cors-headers
 
 IN FRONTEND:
 
 npm create vite@latest . ---> react, javascript
-react-router-dom
 
+after this copy the app.jsx file and index.html file
+also comment the app.css file
+also commit index.css file
+
+npm install react-router-dom
+npm install bootstrap axios swiper
+npm install react-bootstrap bootstrap

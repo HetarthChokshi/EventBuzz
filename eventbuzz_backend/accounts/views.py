@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import generics
 from rest_framework.generics import GenericAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import *
@@ -55,3 +56,74 @@ class UserInfoAPIView(RetrieveAPIView):
     def get_object(self):
         return self.request.user
     
+
+class MovieListView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        movies = Movie.objects.all()
+        return movies
+    
+
+class EventListView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = EventsSerializer
+
+    def get_queryset(self):
+        return Event.objects.all()
+
+
+class SportsListView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = Sportserializers
+
+    def get_queryset(self):
+        return Sport.objects.all()
+
+class MovieDetailView(generics.RetrieveAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = MovieSerializer
+    lookup_field = 'movie_id' 
+
+    def get_queryset(self):
+        movie_id = self.kwargs['movie_id']
+        return Movie.objects.filter(movie_id=movie_id)
+    
+
+class MovieCastView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = ActorSerializer
+
+    def get_queryset(self):
+        movie_id = self.kwargs['movie_id']
+        return Actor.objects.filter(movie_id=movie_id)
+    
+
+class MovieCrewView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = CrewSerializer
+
+    def get_queryset(self):
+        movie_id = self.kwargs['movie_id']
+        return Crew.objects.filter(movie_id=movie_id)
+    
+
+class EventDetailView(generics.RetrieveAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = EventsSerializer
+    lookup_field = 'event_id' 
+
+    def get_queryset(self):
+        event_id = self.kwargs['event_id']
+        return Event.objects.filter(event_id=event_id)
+    
+
+class SportsDetailView(generics.RetrieveAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = Sportserializers
+    lookup_field = 'sport_id' 
+
+    def get_queryset(self):
+        sport_id = self.kwargs['sport_id']
+        return Sport.objects.filter(sport_id=sport_id)
