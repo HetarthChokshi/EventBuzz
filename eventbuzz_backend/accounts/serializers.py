@@ -69,3 +69,8 @@ class CrewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Crew
         fields = '__all__'
+
+class ShowtimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Showtime
+        fields = ['show_id', 'movie', 'theatre', 'show_date', 'show_timing']

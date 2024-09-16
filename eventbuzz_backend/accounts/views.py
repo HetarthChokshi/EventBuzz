@@ -6,7 +6,9 @@ from .serializers import *
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes  
 
+from .models import Showtime,Theatre
 class UserRegistrationAPIView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserRegistrationSerializer
@@ -127,3 +129,41 @@ class SportsDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         sport_id = self.kwargs['sport_id']
         return Sport.objects.filter(sport_id=sport_id)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])  # Only allow authenticated users
+def theatre_list(request,movie,date):
+    try:
+        shows=Showtime.objects.filter(show_date=date,movie=movie) # Fetch all movies from the database
+        theatres=Theatre.objects.all()
+
+        serializer = ShowtimeSerializer(shows, many=True) 
+        shows_list=serializer.data
+        theatre_dict = {theatre.theatre_id: theatre.theatre_name for theatre in theatres}
+        for show in shows_list:
+            theatre_id = show['theatre']
+            show['theatre'] = theatre_dict.get(theatre_id, "Unknown Theatre")
+         # Serialize the data
+
+
+        theatre_dict = {}
+    
+        for showtime in shows_list:
+            theatre = showtime['theatre']
+            show_timing = showtime['show_timing']
+            show_id = showtime['show_id']
+        
+            if theatre not in theatre_dict:
+                theatre_dict[theatre] = {
+                    'theatre': theatre,
+                    'show_timing': [],
+                    'show_id': show_id
+                }
+        
+            theatre_dict[theatre]['show_timing'].append(show_timing)
+    
+    # Convert dictionary to list
+        result = list(theatre_dict.values())
+        return Response(result, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

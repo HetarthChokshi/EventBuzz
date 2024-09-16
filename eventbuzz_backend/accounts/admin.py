@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Movie, Actor,Crew,Theatre,Event,Sport,Showtime
+from .models import CustomUser, Movie, Actor,Crew,Theatre,Event,Sport,Showtime,Seat
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin
 
@@ -40,4 +40,8 @@ class SportAdmin(admin.ModelAdmin):
 @admin.register(Showtime)
 class ShowtimeAdmin(admin.ModelAdmin):
     list_display = ('show_id', 'movie', 'theatre', 'show_date', 'show_timing')
+
+@admin.register(Seat)
+class SeatAdmin(admin.ModelAdmin):
+    list_display = ('seats_id', 'show_id', 'seats') 
 

@@ -98,3 +98,11 @@ class Showtime(models.Model):
     
     def __str__(self):
         return f"{self.movie} at {self.theatre} on {self.show_date} at {self.show_timing}"
+
+class Seat(models.Model):
+    seats_id = models.IntegerField(primary_key=True)  # Auto-incrementing primary key
+    show = models.ForeignKey(Showtime, on_delete=models.CASCADE)  # Foreign Key to Show model
+    seats = models.TextField()  # TextField for seat details
+
+    def __str__(self):
+        return f"Seat ID: {self.seats_id}, Show: {self.show_id}"

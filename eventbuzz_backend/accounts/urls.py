@@ -8,7 +8,6 @@ urlpatterns = [
     path("logout/", UserLogoutAPIView.as_view(), name='logout-user'),
     path("token/refresh/", TokenRefreshView.as_view(), name='token-refresh'),
     path("user/", UserInfoAPIView.as_view(), name="user-info"),
-
     path('movies/', MovieListView.as_view(), name='movie-list'),
     path('events/', EventListView.as_view(), name='event-list'),
     path('sports/', SportsListView.as_view(), name='sport-list'),
@@ -17,4 +16,5 @@ urlpatterns = [
     path('movies/<int:movie_id>/crew/', MovieCrewView.as_view(), name='movie-crew'),
     path('events/<int:event_id>/', EventDetailView.as_view(), name='event-detail'),
     path('sports/<int:sport_id>/', SportsDetailView.as_view(), name='sport-detail'),
+    path('theatres/<int:movie>/<slug:date>/', theatre_list, name='show-detail'),
 ]

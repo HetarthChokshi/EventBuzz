@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
 import Login from './pages/Login'
 import Register from './pages/Register'
-
+import ShowTiming from './pages/ShowTiming';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from './pages/Navbar.jsx';
@@ -34,6 +34,7 @@ function Appwrapper() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/events/:eventId" element={<Events />} />
                 <Route path="/sports/:sportsId" element={<Sports />} />
+                <Route path="/shows" element={<ShowTiming />} />
             </Routes>
 
             {!hideNavAndFooterRoutes.includes(location.pathname) && <Footer />}

@@ -1,0 +1,76 @@
+/* App.css or your stylesheet */
+
+.body-container{
+  background-color: #f4f4f4;
+}
+
+.theatre-showings {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0 auto;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.movie-name {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.date-picker-container {
+  margin-bottom: 20px;
+}
+
+.date-picker-container label {
+  margin-right: 10px;
+}
+
+.date-picker-container input[type="date"] {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.main-container {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.theatre-container {
+  margin-bottom: 30px;
+}
+
+.theatre-name {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.show-timings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.show-time-button {
+  color: rgb(12, 196, 12);
+  background: #FFFFFF;
+  border: 1px solid black;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.show-time-button:hover {
+  transform: scale(1.05); 
+}
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
