@@ -135,7 +135,7 @@ class SportsDetailView(generics.RetrieveAPIView):
 def theatre_list(request,movie,date):
     try:
         shows=Showtime.objects.filter(show_date=date,movie=movie) # Fetch all movies from the database
-        theatres=Theatre.objects.all()
+        theatres=Theatre.objects.filter(city="Ahmedabad")
 
         serializer = ShowtimeSerializer(shows, many=True) 
         shows_list=serializer.data

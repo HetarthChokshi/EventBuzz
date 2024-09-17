@@ -47,23 +47,26 @@ function ShowTiming() {
           />
         </div>
         <div className="main-container">
-          {theatres.map((theatres, index) => (
-            <div key={index} className="theatre-container">
-              <h3 className="theatre-name">{theatres.theatre}</h3>
-              <div className="show-timings">
-                {theatres.show_timing.map((show_timing, i) => (
-                  <button
-                    key={i}
-                    className="show-time-button"
-                    onClick={() => handleShowTimeClick(theatres.theatre, show_timing)}
-                  >
-                    {show_timing}
-                  </button>
-                ))}
-              </div>
-              {index < theatres.length - 1 && <hr className="divider" />} {/* Adds a line between theatre containers */}
-            </div>
-          ))}
+        {theatres.map((theatre, index) =>
+  theatre.theatre === "Unknown Theatre" ? null : (
+    <div key={index} className="theatre-container">
+      <h3 className="theatre-name">{theatre.theatre}</h3>
+      <div className="show-timings">
+        {theatre.show_timing.map((show_timing, i) => (
+          <button
+            key={i}
+            className="show-time-button"
+            onClick={() => handleShowTimeClick(theatre.theatre, show_timing)}
+          >
+            {show_timing} Hrs
+          </button>
+        ))}
+      </div>
+      {index < theatres.length - 1 && <hr className="divider" />} {/* Adds a line between theatre containers */}
+    </div>
+  )
+)}
+
         </div>
       </div>
     </div>
