@@ -17,4 +17,5 @@ urlpatterns = [
     path('events/<int:event_id>/', EventDetailView.as_view(), name='event-detail'),
     path('sports/<int:sport_id>/', SportsDetailView.as_view(), name='sport-detail'),
     path('theatres/<int:movie>/<slug:date>/', theatre_list, name='show-detail'),
+    path('seatsLayout/<int:show_id>',get_seat_layout,name="seatsLayout")
 ]

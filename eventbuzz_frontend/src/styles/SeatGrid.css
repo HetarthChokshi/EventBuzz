@@ -1,0 +1,65 @@
+.seat-grid {
+    display: flex;
+    flex-direction: column; /* Arrange rows vertically */
+    gap: 10px; /* Space between rows */
+    margin-left: 550px;
+    margin-top: 150px;
+    margin-bottom: 100px;
+  }
+  
+  .seat-row {
+    display: flex; /* Arrange row label and seats horizontally */
+    align-items: center;
+  }
+  
+  .row-label {
+    width: 30px; /* Fixed width for row labels */
+    font-weight: bold; /* Make row labels bold */
+    text-align: right; /* Align text to the right */
+    margin-right: 10px; /* Space between label and seats */
+  }
+  
+  .row-seats {
+    display: flex; /* Use flexbox to display seats in a row */
+  }
+  
+  .seat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 0.5px green;
+    background-color: white;
+    color: green;
+    height: 0.7cm;
+    width: 0.7cm;
+    font-size: 15px;
+    margin: 3px;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  
+  .seat.selected {
+    background-color: #1ea83c;
+    color: white;
+  }
+  
+  .seat.occupied {
+    background-color: #d6d2d2;
+    border: none;
+    height: 0.7cm;
+    width: 0.7cm;
+    color: white;
+  }
+  
+  .seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    background-color: #1ea83c;
+    color: white;
+    border:none;
+  }
+  
+  .row-seats div:nth-child(5n) {
+    margin-right: 20px; /* Gap after every 5 seats */
+  }
+  

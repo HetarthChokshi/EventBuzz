@@ -12,6 +12,7 @@ import Footer from './pages/Footer.jsx'
 import MovieInfo from './pages/MovieInfo.jsx';
 import Events from './pages/Events.jsx';
 import Sports from './pages/Sports.jsx';
+import SeatGrid from './pages/SeatGrid';
 
 
 // Use to hide and show the apps in which navbar and footer is shown and not shown
@@ -35,6 +36,7 @@ function Appwrapper() {
                 <Route path="/events/:eventId" element={<Events />} />
                 <Route path="/sports/:sportsId" element={<Sports />} />
                 <Route path="/shows" element={<ShowTiming />} />
+                <Route path="/seatLayout" element={<SeatGrid />} />
             </Routes>
 
             {!hideNavAndFooterRoutes.includes(location.pathname) && <Footer />}

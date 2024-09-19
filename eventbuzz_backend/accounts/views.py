@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from rest_framework import generics
 from rest_framework.generics import GenericAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -156,14 +156,29 @@ def theatre_list(request,movie,date):
             if theatre not in theatre_dict:
                 theatre_dict[theatre] = {
                     'theatre': theatre,
-                    'show_timing': [],
-                    'show_id': show_id
+                    'show_timing': []            
                 }
         
-            theatre_dict[theatre]['show_timing'].append(show_timing)
+            theatre_dict[theatre]['show_timing'].append({
+                    'show': show_timing,
+                    'show_id': show_id
+                     })
     
     # Convert dictionary to list
         result = list(theatre_dict.values())
         return Response(result, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_seat_layout(request,show_id):
+    try:
+        seat = get_object_or_404(Seat, show=show_id)
+        serializer=SeatSerializer(seat)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    
+

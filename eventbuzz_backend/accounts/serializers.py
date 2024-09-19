@@ -74,3 +74,8 @@ class ShowtimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Showtime
         fields = ['show_id', 'movie', 'theatre', 'show_date', 'show_timing']
+
+class SeatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Seat
+        fields = ['seats_id', 'show', 'seats'] 
